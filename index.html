@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDD Mimarisi Giriş Eğitimi — BMAD & OpenSpec</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Urbanist:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+
+  <header class="site-header site-header-corp">
+    <div class="brand brand-corp">
+      <span class="tc-emblem-wrap" aria-hidden="true">
+        <svg class="tc-emblem" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" fill="#FFC000"/>
+          <circle cx="38" cy="38" r="9" fill="#001480"/>
+          <circle cx="62" cy="54" r="9" fill="#001480"/>
+          <path d="M 38 38 Q 44 65 62 54" stroke="#001480" stroke-width="9" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Turkcell Akademi</strong>
+        <span>SDD Mimarisi Eğitimi · BMAD & OpenSpec</span>
+      </div>
+    </div>
+    <nav class="app-tabs" id="appTabs">
+      <button class="app-tab active" data-view="presentation">Sunum</button>
+      <button class="app-tab" data-view="reference">Referans</button>
+      <button class="app-tab" data-view="demo">Canlı Demo</button>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <!-- SUNUM SLAYTLARI -->
+    <section class="view active" id="view-presentation" data-view="presentation">
+      <div class="deck-workspace">
+        <aside class="deck-sidebar" aria-label="Slayt listesi">
+          <div class="deck-sidebar-head">
+            <h3>Slayt Navigasyonu</h3>
+            <span class="deck-sidebar-badge" id="slideCountBadge">1 / 24</span>
+          </div>
+          <nav class="deck-sidebar-list sidebar-scroll" id="slideSidebarList"></nav>
+          <div class="deck-sidebar-foot">© 2026 Turkcell Akademi</div>
+        </aside>
+
+        <div class="deck-main">
+          <div class="deck-toolbar">
+            <div class="deck-toolbar-meta">
+              <span class="deck-section" id="slideSection">Giriş</span>
+              <span class="deck-toolbar-sep" aria-hidden="true"></span>
+              <span class="deck-slide-title" id="slideTitleLabel">Eğitim Başlangıcı</span>
+            </div>
+            <div class="deck-progress"><div class="deck-progress-fill" id="slideProgress"></div></div>
+          </div>
+
+          <div class="deck-canvas-wrap" id="deckCanvasWrap">
+            <div class="slide-canvas" id="slideCanvas">
+              <div class="slide-stage" id="slideStage" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <footer class="deck-controls">
+            <div class="deck-nav-group">
+              <button type="button" class="btn-deck-round" id="slidePrev" disabled title="Önceki slayt">‹</button>
+              <button type="button" class="btn-deck-round" id="slideNext" title="Sonraki slayt">›</button>
+            </div>
+            <span class="deck-hint">← → gezin · Home/End · Satıra tıkla</span>
+            <div class="deck-nav-group">
+              <button type="button" class="btn btn-ghost btn-nav-edge" id="slideFirst" title="İlk slayt (Home)">⏮ Başa</button>
+              <button type="button" class="btn btn-ghost btn-nav-edge" id="slideLast" title="Son slayt (End)">Sona ⏭</button>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERANS TABLOLARI -->
+    <section class="view" id="view-reference" data-view="reference">
+      <div class="view-inner scrollable">
+        <h2>Komut Referansı</h2>
+        <p class="view-lead">Sunum sırasında hızlı bakış — satıra tıklayarak detay popup'ını açın.</p>
+
+        <h3 class="section-sub">BMAD Ajanları</h3>
+        <div class="agents-grid" id="agentsGrid"></div>
+
+        <h3 class="section-sub">BMAD Komutları</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="refBmadTable">
+            <thead>
+              <tr>
+                <th>Sıra</th><th>Komut</th><th>Alias</th><th>Aşama</th>
+                <th>Ne İşe Yarar?</th><th>Ne Zaman?</th><th>Çıktı</th><th>Ajan</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h3 class="section-sub">OpenSpec Kavramları</h3>
+        <div class="concept-list" id="conceptsList"></div>
+
+        <h3 class="section-sub">OpenSpec Komutları</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="refOpsxTable">
+            <thead>
+              <tr>
+                <th>Sıra</th><th>Komut</th><th>Aşama</th>
+                <th>Ne İşe Yarar?</th><th>Ne Zaman?</th><th>Çıktı</th><th>Aktör</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CANLI DEMO (SİMÜLASYONLAR) -->
+    <section class="view" id="view-demo" data-view="demo">
+      <nav class="demo-sub-tabs" id="demoSubTabs">
+        <button class="demo-sub-tab active" data-demo="guide">BMAD Simülasyonu</button>
+        <button class="demo-sub-tab" data-demo="opsx-guide">OpenSpec Simülasyonu</button>
+      </nav>
+
+      <!-- BMAD SİM -->
+      <div class="demo-panel active" data-demo="guide">
+        <p class="sim-banner">Turkcell Akademi senaryosu — kurulum → analiz → PRD akışı</p>
+        <nav class="step-tabs" id="stepTabs" aria-label="BMAD adımları"></nav>
+
+        <div class="guide-toolbar">
+          <div class="step-meta">
+            <span class="step-badge" id="stepBadge">Adım 1 / 9</span>
+            <span class="step-optional" id="stepOptional" hidden>Opsiyonel</span>
+            <span class="step-phase" id="stepPhase">Kurulum</span>
+          </div>
+          <label class="auto-advance-toggle" for="autoAdvance">
+            <input type="checkbox" id="autoAdvance" checked />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-label">Otomatik ilerle</span>
+          </label>
+        </div>
+
+        <div class="guide-header">
+          <h1 id="stepTitle">BMAD Kurulumu</h1>
+          <p id="stepDesc"></p>
+        </div>
+
+        <div class="content-tabs" id="contentTabs">
+          <button class="content-tab active" data-content="terminal">Terminal</button>
+          <button class="content-tab" data-content="command">Komut</button>
+          <button class="content-tab" data-content="explain">Anlatım</button>
+        </div>
+
+        <div class="content-panels">
+          <div class="content-panel active" id="panel-terminal" data-content="terminal">
+            <div class="terminal" id="mainTerminal">
+              <div class="terminal-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">bmad-sim — Cursor IDE</span>
+              </div>
+              <div class="terminal-body" id="terminalBody">
+                <div class="terminal-output" id="terminalOutput"></div>
+                <div class="terminal-input-line">
+                  <span class="prompt" id="promptLabel">~/akademi-portal $</span>
+                  <span class="typed-cmd" id="typedCmd"></span>
+                  <span class="cursor" id="cursor">█</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-panel" id="panel-command" data-content="command">
+            <div class="command-card">
+              <div class="command-card-header">
+                <span>Komut</span>
+                <button class="copy-btn" id="copyCmd">Kopyala</button>
+              </div>
+              <code id="stepCommand"></code>
+              <p class="command-alias" id="stepAlias" hidden></p>
+              <p class="command-result" id="stepResult" hidden></p>
+            </div>
+            <div class="prompt-card">
+              <span class="prompt-card-label">Çalıştırma ortamı</span>
+              <code id="stepPrompt"></code>
+            </div>
+          </div>
+
+          <div class="content-panel" id="panel-explain" data-content="explain">
+            <div class="explain-box">
+              <h3>Bu komut ne yapar?</h3>
+              <p id="stepExplain"></p>
+            </div>
+            <div class="tips-inline" id="stepTips">
+              <p>💡 Her workflow için Cursor'da <strong>yeni bir chat</strong> açın.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-footer">
+          <div class="terminal-controls">
+            <button class="btn btn-ghost" id="prevStep" disabled>← Önceki</button>
+            <button class="btn btn-primary" id="runStep">Çalıştır ve İlerle ▶</button>
+            <button class="btn btn-ghost" id="nextStep">Sonraki →</button>
+            <button class="btn btn-ghost" id="restartGuide" hidden>Baştan Başla ↺</button>
+          </div>
+          <p class="guide-complete-msg" id="guideCompleteMsg" hidden>Simülasyon tamamlandı. Tekrar denemek için Baştan Başla'yı kullanın.</p>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+      </div>
+
+      <!-- OPENSPEC SİM -->
+      <div class="demo-panel" data-demo="opsx-guide">
+        <p class="sim-banner opsx-banner">Turkcell Mobil gamer ek paket ekranı · propose → apply → archive</p>
+        <nav class="step-tabs" id="opsxStepTabsMain" aria-label="OpenSpec adımları"></nav>
+
+        <div class="guide-toolbar">
+          <div class="step-meta">
+            <span class="step-badge" id="opsxStepBadge">Adım 1 / 6</span>
+            <span class="step-optional" id="opsxStepOptional" hidden>Opsiyonel</span>
+            <span class="step-phase" id="opsxStepPhase">Keşif</span>
+          </div>
+          <label class="auto-advance-toggle" for="opsxAutoAdvance">
+            <input type="checkbox" id="opsxAutoAdvance" checked />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-label">Otomatik ilerle</span>
+          </label>
+        </div>
+
+        <div class="guide-header">
+          <h1 id="opsxStepTitle">/opsx:explore</h1>
+          <p id="opsxStepDesc"></p>
+        </div>
+
+        <div class="content-tabs" id="opsxContentTabs">
+          <button class="content-tab active" data-opsx-content="terminal">Terminal</button>
+          <button class="content-tab" data-opsx-content="command">Komut</button>
+          <button class="content-tab" data-opsx-content="explain">Anlatım</button>
+        </div>
+
+        <div class="content-panels">
+          <div class="content-panel active" data-opsx-content="terminal">
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">openspec-sim — Cursor Chat</span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-output" id="opsxTerminalOutput"></div>
+                <div class="terminal-input-line">
+                  <span class="prompt" id="opsxPromptLabel">Cursor Chat ›</span>
+                  <span class="typed-cmd" id="opsxTypedCmd"></span>
+                  <span class="cursor" id="opsxCursorMain">█</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-panel" data-opsx-content="command">
+            <div class="command-card">
+              <div class="command-card-header">
+                <span>Komut</span>
+                <button class="copy-btn" id="opsxCopyCmd">Kopyala</button>
+              </div>
+              <code id="opsxStepCommand"></code>
+              <p class="command-result" id="opsxStepResult" hidden></p>
+            </div>
+            <div class="prompt-card">
+              <span class="prompt-card-label">Çalıştırma ortamı</span>
+              <code id="opsxStepPrompt"></code>
+            </div>
+          </div>
+
+          <div class="content-panel" data-opsx-content="explain">
+            <div class="explain-box">
+              <h3>Bu komut ne yapar?</h3>
+              <p id="opsxStepExplain"></p>
+            </div>
+            <div class="tips-inline">
+              <p>💡 OpenSpec'te tüm aktörler (insan, developer, AI, QA) aynı <strong>intent ve spec</strong> üzerinde hizalanır.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-footer">
+          <div class="terminal-controls">
+            <button class="btn btn-ghost" id="opsxPrevStep" disabled>← Önceki</button>
+            <button class="btn btn-primary" id="opsxRunStep">Çalıştır ve İlerle ▶</button>
+            <button class="btn btn-ghost" id="opsxNextStep">Sonraki →</button>
+            <button class="btn btn-ghost" id="opsxRestartGuide" hidden>Baştan Başla ↺</button>
+          </div>
+          <p class="guide-complete-msg" id="opsxGuideCompleteMsg" hidden>Simülasyon tamamlandı. Tekrar denemek için Baştan Başla'yı kullanın.</p>
+          <div class="progress-track"><div class="progress-fill" id="opsxProgressFill"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- KOMUT DETAY MODAL -->
+  <div class="command-modal" id="commandModal" role="dialog" aria-modal="true" aria-labelledby="modalCmdTitle">
+    <div class="modal-overlay-bg"></div>
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" aria-label="Kapat">×</button>
+      <header class="modal-header">
+        <span class="modal-fw"></span>
+        <code class="modal-cmd" id="modalCmdTitle"></code>
+        <span class="modal-alias"></span>
+        <span class="modal-stage"></span>
+        <span class="modal-order muted small"></span>
+      </header>
+      <div class="modal-body">
+        <div class="modal-field">
+          <h4>Ne işe yarar?</h4>
+          <p class="modal-purpose"></p>
+        </div>
+        <div class="modal-grid">
+          <div class="modal-field">
+            <h4>Ne zaman kullanılır?</h4>
+            <p class="modal-when"></p>
+          </div>
+          <div class="modal-field">
+            <h4>Çıktı</h4>
+            <p class="modal-output"></p>
+          </div>
+          <div class="modal-field">
+            <h4>Aktör / Ajan</h4>
+            <p class="modal-actor"></p>
+          </div>
+        </div>
+        <div class="modal-note presenter-tip" hidden>
+          <h4>Sunum notu</h4>
+          <p></p>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-ghost modal-prev-cmd">← Önceki komut</button>
+        <button type="button" class="btn btn-ghost modal-copy">Komutu Kopyala</button>
+        <button type="button" class="btn btn-primary modal-next-cmd">Sonraki komut →</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="presentation.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
