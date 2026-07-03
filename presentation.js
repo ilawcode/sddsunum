@@ -10,14 +10,14 @@ const TC_EMBLEM = `<svg class="tc-emblem" viewBox="0 0 100 100" fill="none" xmln
   <path d="M 38 38 Q 44 65 62 54" stroke="#001480" stroke-width="9" stroke-linecap="round" fill="none"/>
 </svg>`;
 
-const AK_LOGO = `<div class="ak-brand" aria-label="Turkcell">
+const AK_LOGO = `<div class="ak-brand" aria-label="Akademi">
   ${TC_EMBLEM}
-  <span class="ak-logo-stack"><span class="ak-logo-name">TURKCELL</span><span class="ak-logo-sub">TURKCELL GENERAL</span></span>
+  <span class="ak-logo-stack"><span class="ak-logo-name">AKADEMI</span><span class="ak-logo-sub">GENEL</span></span>
 </div>`;
 
-const AK_LOGO_COVER = `<div class="ak-brand ak-brand-cover" aria-label="Turkcell">
+const AK_LOGO_COVER = `<div class="ak-brand ak-brand-cover" aria-label="Akademi">
   ${TC_EMBLEM}
-  <span class="ak-logo-stack"><span class="ak-logo-name">TURKCELL</span></span>
+  <span class="ak-logo-stack"><span class="ak-logo-name">AKADEMI</span></span>
 </div>`;
 
 function buildPresentationSlides() {
@@ -26,7 +26,6 @@ function buildPresentationSlides() {
     { id: "purpose", section: "Giriş", type: "purpose", title: "EĞİTİM AMACI" },
     { id: "sdd-what", section: "SDD", type: "sdd-what", title: "SDD NEDİR?" },
     { id: "sdd-why", section: "SDD", type: "sdd-why", title: "NEDEN SDD?" },
-    { id: "framework", section: "SDD", type: "framework", title: "EĞİTİM ÇERÇEVESİ" },
     { id: "positioning", section: "Çerçeve", type: "positioning", title: "BMAD & OPENSPEC" },
     { id: "bmad-intro", section: "BMAD", type: "bmad-intro", title: "BMAD NEDİR?" },
     { id: "bmad-agents", section: "BMAD", type: "bmad-agents", title: "UZMAN AJAN KADROSU" },
@@ -66,9 +65,6 @@ function buildPresentationSlides() {
   });
 
   slides.push(
-    { id: "compare", section: "Senaryolar", type: "compare", title: "KARŞILAŞTIRMA" },
-    { id: "scenario-1", section: "Senaryolar", type: "scenario", index: 0, title: "SENARYO 1" },
-    { id: "scenario-2", section: "Senaryolar", type: "scenario", index: 1, title: "SENARYO 2" },
     { id: "outcomes", section: "Kapanış", type: "outcomes", title: "EĞİTİM KAZANIMLARI" },
     { id: "demo-cta", section: "Kapanış", type: "demo-cta", title: "CANLI DEMO", layout: "cover" }
   );
@@ -85,8 +81,8 @@ function akBullet(title, text) {
 function wrapAkademiSlide(slide, index, body) {
   const total = PRESENTATION_SLIDES.length;
   const footLeft = slide.footLabel
-    ? `Turkcell Akademi · ${slide.footLabel}`
-    : "Turkcell Akademi © 2026";
+    ? `Akademi · ${slide.footLabel}`
+    : "Akademi © 2026";
   const foot = `<footer class="ak-foot"><span>${footLeft}</span><span class="ak-foot-num">Slayt ${index + 1} / ${total}</span></footer>`;
   const lumos = `<div class="ak-lumos" aria-hidden="true"></div>`;
   const bodyInv = slide.type === "command-inventory" ? " ak-body-inventory" : "";
@@ -100,12 +96,12 @@ function wrapAkademiSlide(slide, index, body) {
     return `<div class="slide-inner akademi-slide ak-cover">
       <header class="ak-cover-top">
         ${AK_LOGO_COVER}
-        <span class="ak-confidential">TURKCELL GENERAL</span>
+        <span class="ak-confidential">GENEL</span>
       </header>
       <main class="ak-body ak-body-cover">${body}</main>
       <footer class="ak-cover-foot">
         <span>Eğitmenler: Uğur Erdem & Berrin Büyüklü</span>
-        <span>Referans: TURKCELL_SUNUM_FORMATI</span>
+        <span></span>
       </footer>
       ${lumos}
     </div>`;
@@ -115,7 +111,7 @@ function wrapAkademiSlide(slide, index, body) {
     return `<div class="slide-inner akademi-slide ak-cover ak-cover-alt">
       <header class="ak-cover-top">
         ${AK_LOGO_COVER}
-        <span class="ak-confidential">TURKCELL GENERAL</span>
+        <span class="ak-confidential">GENEL</span>
       </header>
       <main class="ak-body ak-body-cover">${body}</main>
       ${foot}${lumos}
@@ -290,7 +286,7 @@ function createPresentationDeck(deps) {
     return `<ul class="ak-bullet-list ak-bullet-spacious">
       ${akBullet("Framework", "Yapay zeka destekli, rol bazlı, yapılandırılmış çalışma yaklaşımı — fikirden delivery'ye akış.")}
       ${akBullet("Ajan perspektifleri", "Analyst, PM, Architect, Developer, QA ve daha fazlası — her biri farklı soruyu sorar.")}
-      ${akBullet("Komut tabanlı workflow", "Cursor IDE üzerinden adım adım ilerleyen, tekrarlanabilir süreç komutları.")}
+      ${akBullet("Komut tabanlı workflow", "claude-saka üzerinden adım adım ilerleyen, tekrarlanabilir süreç komutları.")}
       ${akBullet("Ana akış", "Brief → PRD → UX / Mimari → Epic & Story → Uygulama")}
     </ul>`;
   }
@@ -505,7 +501,7 @@ function createPresentationDeck(deps) {
         <article class="demo-cta-card bmad-cta">
           <span class="cta-emoji">🎓</span>
           <h3>BMAD Simülasyonu</h3>
-          <p>Turkcell Akademi Eğitmen Portalı — kurulum → analiz → PRD</p>
+          <p>Akademi Eğitmen Portalı — kurulum → analiz → PRD</p>
           <button type="button" class="btn btn-glow" id="ctaBmadSim">BMAD Demo →</button>
         </article>
         <article class="demo-cta-card opsx-cta">

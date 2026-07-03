@@ -1725,7 +1725,7 @@ body {
   cursor: default;
 }
 
-/* Turkcell Akademi slayt şablonu — TURKCELL_SUNUM_FORMATI */
+/* Akademi slayt şablonu — SUNUM_FORMATI */
 .slide-inner.akademi-slide {
   display: flex;
   flex-direction: column;

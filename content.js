@@ -147,7 +147,7 @@ const SCENARIOS = [
   {
     id: "new-project",
     title: "Workflow 1 — Sıfırdan Yeni Proje",
-    name: "Turkcell Akademi Eğitmen Portalı",
+    name: "Akademi Eğitmen Portalı",
     goal: "Eğitmenlerin kaydedildiği, bilgilerinin tutulduğu, performanslarının takip edildiği ve puanlandığı bir portal.",
     learn: "Sıfırdan ürün geliştirirken SDD yaklaşımının neden önemli olduğunu anlamak.",
     bmad: ["brainstorming", "market/domain/technical research", "bmad-create-brf", "bmad-create-prd", "bmad-create-ux-design", "bmad-create-architecture", "bmad-create-epics-and-stories"],
@@ -156,7 +156,7 @@ const SCENARIOS = [
   {
     id: "feature",
     title: "Workflow 2 — Mevcut Projeye Özellik",
-    name: "Turkcell Mobil — Gamer Ek Paket Ekranı",
+    name: "Mobil Uygulama — Gamer Ek Paket Ekranı",
     goal: "Mevcut mobil uygulamaya gamer segmentine özel ek paketlerin listelendiği ve satın alma akışına yönlendiren yeni ekran.",
     learn: "Mevcut projede değişiklik yaparken spec ve plan disiplininin daha da kritik olduğunu kavramak.",
     bmad: ["domain + technical research", "bmad-create-brf (feature amacı)", "bmad-create-prd", "bmad-create-architecture", "bmad-create-epics-and-stories", "story + delivery"],
